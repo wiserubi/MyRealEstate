@@ -10,7 +10,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:weightSum= "100"
             android:background="#02033e">
          <!--   <Button
@@ -23,7 +23,7 @@
             <Button
                 android:id="@+id/ButtonHome"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_weight="25"
                 android:textColor="#02033e"
                 android:textSize="17dp"
@@ -31,7 +31,7 @@
             <Button
                 android:id="@+id/ButtonOfferRegister"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_weight="25"
                 android:textColor="#02033e"
                 android:textSize="17dp"
@@ -39,7 +39,7 @@
             <Button
                 android:id="@+id/ButtonOffer"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_weight="25"
                 android:textColor="#02033e"
                 android:textSize="17dp"
@@ -47,7 +47,7 @@
             <Button
                 android:id="@+id/ButtonLogin"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_weight="25"
                 android:textColor="#02033e"
                 android:textSize="17dp"

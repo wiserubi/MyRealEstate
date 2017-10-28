@@ -1,6 +1,7 @@
 package com.shinhan.kdh1.myrealestate;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -88,6 +89,7 @@ public class JoinActivity extends AppCompatActivity {
             return output.toString();
         }
 
+
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             dialog.dismiss();
@@ -95,8 +97,10 @@ public class JoinActivity extends AppCompatActivity {
                 JSONObject json = new JSONObject(s);
                 if (json.getBoolean("result") == true) {//로그인 성공
                     Toast.makeText(JoinActivity.this,
-                            "가입되었습니다 로그인을 해주세요.",
-                            Toast.LENGTH_SHORT).show();
+                            "가입되었습니다 로그인을 해주세요.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(JoinActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                         finish();
                 } else {//로그인 실패
                     Toast.makeText(JoinActivity.this,
                             "가입중오류.",
