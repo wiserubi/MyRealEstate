@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100"
+        tools:context="com.shinhan.kdh1.myrealestate.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:weightSum= "100"
+            android:background="#02033e">
+         <!--   <Button
+                android:id="@+id/activityButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="이동" />-->
+            <Button
+                android:id="@+id/ButtonHome"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="25"
+                android:textColor="#02033e"
+                android:textSize="17dp"
+                android:text="HOME" />
+            <Button
+                android:id="@+id/ButtonOfferRegister"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="25"
+                android:textColor="#02033e"
+                android:textSize="17dp"
+                android:text="매물등록" />
+            <Button
+                android:id="@+id/ButtonOffer"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="25"
+                android:textColor="#02033e"
+                android:textSize="17dp"
+                android:text="매물보기" />
+            <Button
+                android:id="@+id/ButtonLogin"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="25"
+                android:textColor="#02033e"
+                android:textSize="17dp"
+                android:text="LOGIN" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/zai1" />
+
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="left|center_vertical"
+                android:text="공덕1구역"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="texttexttextext"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="texttexttextext"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/dalim" />
+
+            <TextView
+                android:id="@+id/title2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="left|center_vertical"
+                android:text="염리3구역"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text21"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="texttexttextext"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/text22"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="texttexttextext"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/zai" />
+
+
+            <TextView
+                android:id="@+id/title3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="left|center_vertical"
+                android:text="서초무지개재건축"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text31"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="texttexttextext"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/text32"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="texttexttextext"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
