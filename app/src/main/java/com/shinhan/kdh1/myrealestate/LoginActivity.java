@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("token", token);
                     editor.commit();
-                    Intent intent = new Intent(LoginActivity.this, WebViewActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {//로그인 실패
