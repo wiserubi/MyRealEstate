@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -28,48 +30,85 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewActivity extends AppCompatActivity {
+
+
+    private final String[] condition = {"투자금액순","권리가순","날짜순"};
+
     ListView listView = null;
+    ItemAdapter itemAdpater = null;
+    ArrayList<Item> itemList = new ArrayList<Item>();
+    Context mContext = null;
+
+    private Runnable updateUI = new Runnable() {
+        public void run() {
+            ViewActivity.this.itemAdpater.notifyDataSetChanged();
+        }
+    };
     class Item {
-        int image;
-        String title;
-        String text;
-        Item(int image, String title, String text) {
-            this.image = image;
-            this.title = title;
-            this.text = text;
+
+        String location_si;
+        String location_name;
+        Item(String title, String text) {
+
+            this.location_si = title;
+            this.location_name = text;
         }
     }
-    ArrayList<Item> itemList = new ArrayList<Item>();
     class ItemAdapter extends ArrayAdapter {
+
+
+        Context mContext;
+        int rowResourceId;
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             if (convertView == null) {
                 LayoutInflater layoutInflater =
                         (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = layoutInflater.inflate(R.layout.activity_view, null);
+                convertView = layoutInflater.inflate(this.rowResourceId, null);
             }
-            TextView text1View = (TextView)convertView.findViewById(R.id.title);
-            TextView text2View = (TextView)convertView.findViewById(R.id.text);
             Item item = itemList.get(position);
+            if(item !=null){
+                TextView text1View = (TextView)convertView.findViewById(R.id.title);
+                TextView text2View = (TextView)convertView.findViewById(R.id.text);
 
-            text1View.setText(item.title);
-            text2View.setText(item.text);
+                text1View.setText(item.location_si);
+                text2View.setText(item.location_name);
+            }
             return convertView;
         }
 
         public ItemAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List objects) {
             super(context, resource, objects);
+            mContext = context;
+            itemList =  (ArrayList)objects;
+            rowResourceId = resource;
         }
     }
-    ItemAdapter itemAdpater = null;
-    @Override
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view);
-        new LoadUserList().execute("http://172.16.2.14:52273/offer");
+        mContext = getApplicationContext();
+        itemAdpater = new ItemAdapter(ViewActivity.this, R.layout.view_offer,
+                itemList);
+        ListView listView = (ListView)findViewById(R.id.listview);
+        listView.setAdapter(itemAdpater);
+        new LoadUserList().execute("//192.168.42.148:52273/offer");
 
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, condition);
+        Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+
+        spinner1.setPrompt(" 시-구선택");
+        spinner1.setAdapter(adapter1);
+
+        Spinner locationSpinner = (Spinner) findViewById(R.id.spinner1);
+        locationSpinner.getSelectedItem().toString();
+       /* new LoadUserList().execute("http://172.16.2.14:52273/offer");*/
+
+       // new LoadUserList().execute("http://192.168.0.14:52273/offer");
+        new LoadUserList().execute("http://192.168.42.148:52273/offer");
         Button Button1 = (Button) findViewById(R.id.ButtonHome); //해당 버튼을 지정합니다.
         Button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,10 +145,8 @@ public class ViewActivity extends AppCompatActivity {
             }
         });
 
-        itemAdpater = new ItemAdapter(ViewActivity.this, R.layout.activity_view,itemList);
-        listView.setAdapter(itemAdpater);
-
     }
+
     class LoadUserList extends AsyncTask<String,String,String> {
         ProgressDialog dialog = new ProgressDialog(ViewActivity.this);
 
@@ -125,21 +162,18 @@ public class ViewActivity extends AppCompatActivity {
             try{
                 JSONArray array = new JSONArray(s);
                 ArrayList<String> strings = new ArrayList<String>();
-                for(int i =0 ; i < array.length(); i++){
-                    JSONObject obj = array.getJSONObject(i);
-                    strings.add(obj.getString("location_si"));
-                    strings.add(obj.getString("location_name"));
-                    strings.add(obj.getString("total_amt"));
-                }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                        ViewActivity.this, android.R.layout.simple_list_item_1,strings);
-                ListView listView = (ListView)findViewById(R.id.listview);
-                listView.setAdapter(adapter);
+                    Toast.makeText(getApplicationContext(),array.length()+"", Toast.LENGTH_LONG).show();
+                    for(int i =0 ; i < array.length(); i++){
 
-            } catch (Exception e){
+                    JSONObject obj = array.getJSONObject(i);
+
+                    itemList.add(new Item( obj.getString("location_si"),obj.getString("location_name")));;
+                        runOnUiThread(updateUI);
+                }            } catch (Exception e){
                 e.printStackTrace();
             }
         }
+
 
         @Override
         protected String doInBackground(String... params) {

@@ -108,7 +108,21 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="60"/>
             </TableRow>
-
+            <TableRow
+                android:layout_width="300dp"
+                android:layout_height="wrap_content" >
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="40"
+                    android:text="평가금액:"
+                    android:textSize="20sp"/>
+                <EditText
+                    android:id="@+id/original_amt"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="60"/>
+            </TableRow>
             <TableRow
                 android:layout_width="300dp"
                 android:layout_height="wrap_content" >
@@ -172,21 +186,6 @@
                     android:layout_weight="60"/>
             </TableRow>
 
-            <TableRow
-                android:layout_width="300dp"
-                android:layout_height="wrap_content" >
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="40"
-                    android:text="평가금액:"
-                    android:textSize="20sp"/>
-                <EditText
-                    android:id="@+id/original_amt"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="60"/>
-            </TableRow>
             <TableRow
                 android:layout_width="300dp"
                 android:layout_height="wrap_content" >

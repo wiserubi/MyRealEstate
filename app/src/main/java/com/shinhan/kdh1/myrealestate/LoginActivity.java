@@ -39,13 +39,50 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent); //액티비티 이동
             }
         });
+
+        Button Button1 = (Button) findViewById(R.id.ButtonHome); //해당 버튼을 지정합니다.
+        Button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { //버튼이 눌렸을 때
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent); //액티비티 이동
+            }
+        });
+
+        Button Button2 = (Button) findViewById(R.id.ButtonOfferRegister); //해당 버튼을 지정합니다.
+        Button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { //버튼이 눌렸을 때
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent); //액티비티 이동
+            }
+        });
+        Button Button3 = (Button) findViewById(R.id.ButtonOffer); //해당 버튼을 지정합니다.
+        Button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { //버튼이 눌렸을 때
+                Intent intent = new Intent(LoginActivity.this, ViewActivity.class);
+                startActivity(intent); //액티비티 이동
+            }
+        });
+
+        Button Button4 = (Button) findViewById(R.id.ButtonLogin); //해당 버튼을 지정합니다.
+        Button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { //버튼이 눌렸을 때
+                Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                startActivity(intent); //액티비티 이동
+            }
+        });
+
     }
 
     public void login(View view) {
         EditText userIdText = (EditText) findViewById(R.id.user_id);
         EditText passwordText = (EditText) findViewById(R.id.password);
         new Login().execute(
-                "http://172.16.2.14:52273/user/login",
+               // "http://172.16.2.14:52273/user/login",
+                "http://192.168.42.148:52273/user/login",
                 userIdText.getText().toString(),
                 passwordText.getText().toString());
     }
@@ -145,7 +182,6 @@ public class LoginActivity extends AppCompatActivity {
             result.append(URLEncoder.encode(key, "UTF-8"));
             result.append("=");
             result.append(URLEncoder.encode(value.toString(), "UTF-8"));
-
         }
         return result.toString();
     }
