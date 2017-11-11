@@ -8,8 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -23,15 +25,20 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
 
+import static com.shinhan.kdh1.myrealestate.R.id.spinner1;
+
 public class RegisterActivity extends AppCompatActivity {
     private final String[] slocation1 = {"서울마포구", "서울강남구", "서울서초구", "서울송파", "서울성북"};
     private final String[] slocation2 = {"염리3구역", "공덕1구역", "아현1구역", "잠실5단지", "북아현3구역"};
-
+    String user_id = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Intent intent = getIntent();
+        String data = intent.getStringExtra("name");
+        user_id = data;
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, slocation1);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_activated_1, slocation2);
 
@@ -49,6 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //버튼이 눌렸을 때
                 Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                intent.putExtra("name", user_id);
                 startActivity(intent); //액티비티 이동
             }
         });
@@ -58,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //버튼이 눌렸을 때
                 Intent intent = new Intent(RegisterActivity.this, RegisterActivity.class);
+                intent.putExtra("name", user_id);
                 startActivity(intent); //액티비티 이동
             }
         });
@@ -66,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //버튼이 눌렸을 때
                 Intent intent = new Intent(RegisterActivity.this, ViewActivity.class);
+                intent.putExtra("name", user_id);
                 startActivity(intent); //액티비티 이동
             }
         });
@@ -75,6 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //버튼이 눌렸을 때
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                intent.putExtra("name", user_id);
                 startActivity(intent); //액티비티 이동
             }
         });
@@ -100,8 +111,31 @@ public class RegisterActivity extends AppCompatActivity {
         return resultText; // 체크된 값 리턴
     }
 */
-    public void RegisterOffer(View view) {
-        Spinner locationSpinner = (Spinner) findViewById(R.id.spinner1);
+    public int RegisterOffer(View view) {
+
+
+        CheckBox option1 = (CheckBox) findViewById(R.id.checkBox1); // option1체크박스
+        // 선언
+        CheckBox option2 = (CheckBox) findViewById(R.id.jisang); // option1체크박스
+        // 선언
+
+        String resultText1 = ""; // 체크되었을 때 값을 저장할 스트링 값
+        String resultText2 = ""; // 체크되었을 때 값을 저장할 스트링 값
+
+        if (option1.isChecked()) { // option1 이 체크되었다면
+            resultText1 = "1";
+        }
+        else{
+            resultText1 = "0";
+        }
+        if (option2.isChecked()) {
+            resultText2 = "1"; // option2 이 체크되었다면
+        }
+        else{
+            resultText2 = "0";
+        }
+
+        Spinner locationSpinner = (Spinner) findViewById(spinner1);
         Spinner locationSpinner2 = (Spinner) findViewById(R.id.spinner2);
         EditText totalamtText = (EditText) findViewById(R.id.tot_amt);
         EditText premiumText = (EditText) findViewById(R.id.premium);
@@ -109,9 +143,24 @@ public class RegisterActivity extends AppCompatActivity {
         EditText loanText = (EditText) findViewById(R.id.loan);
         EditText movingText = (EditText) findViewById(R.id.moving);
         EditText originalamtText = (EditText) findViewById(R.id.original_amt);
+        if (user_id == null)
+        {
+            Toast.makeText(getApplicationContext(),"로그인을 해주세요!", Toast.LENGTH_LONG).show();
+
+            totalamtText.setText(null);
+            premiumText.setText(null);
+            rentText.setText(null);
+            loanText.setText(null);
+            movingText.setText(null);
+            originalamtText.setText(null);
+
+            return 0;
+        }
+        //등록수행
 
         new registerOffer().execute(
                 "http://172.16.2.14:52273/user/offer",
+                user_id,
                 locationSpinner.getSelectedItem().toString(),
                 locationSpinner2.getSelectedItem().toString(),
                 totalamtText.getText().toString(),
@@ -119,7 +168,23 @@ public class RegisterActivity extends AppCompatActivity {
                 rentText.getText().toString(),
                 loanText.getText().toString(),
                 movingText.getText().toString(),
-                originalamtText.getText().toString());
+                originalamtText.getText().toString(),
+                resultText1.toString(),
+                resultText2.toString());
+
+        Toast.makeText(RegisterActivity.this,
+                "등록되었습니다.", Toast.LENGTH_SHORT).show();
+
+        //text 초기화
+        totalamtText.setText(null);
+        premiumText.setText(null);
+        rentText.setText(null);
+        loanText.setText(null);
+        movingText.setText(null);
+        originalamtText.setText(null);
+
+        return 0;
+
     }
 
     class registerOffer extends AsyncTask<String, String, String> {
@@ -131,15 +196,17 @@ public class RegisterActivity extends AppCompatActivity {
             try {
                 URL url = new URL(params[0]);
                 JSONObject postDataParams = new JSONObject();
-                //postDataParams.put("user_id", params[1]);
-                postDataParams.put("location_si", params[1]);
-                postDataParams.put("location_name", params[2]);
-                postDataParams.put("total_amt", params[3]);
-                postDataParams.put("original_amt", params[4]);
-                postDataParams.put("premium", params[5]);
-                postDataParams.put("rent", params[6]);
-                postDataParams.put("loan", params[7]);
-                postDataParams.put("migration_fee", params[8]);
+                postDataParams.put("user_id", params[1]);
+                postDataParams.put("location_si", params[2]);
+                postDataParams.put("location_name", params[3]);
+                postDataParams.put("total_amt", params[4]);
+                postDataParams.put("original_amt", params[5]);
+                postDataParams.put("premium", params[6]);
+                postDataParams.put("rent", params[7]);
+                postDataParams.put("loan", params[8]);
+                postDataParams.put("migration_fee", params[9]);
+                postDataParams.put("jisang", params[10]);
+                postDataParams.put("public", params[11]);
 
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 if (conn != null) {

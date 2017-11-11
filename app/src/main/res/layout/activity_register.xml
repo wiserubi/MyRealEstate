@@ -25,7 +25,8 @@
     android:layout_width="0dp"
     android:layout_height="40dp"
     android:layout_weight="25"
-    android:textColor="#02033e"
+    android:background="#02033e"
+    android:textColor="#d6d7fc"
     android:textSize="17dp"
     android:text="HOME" />
 <Button
@@ -33,7 +34,8 @@
     android:layout_width="0dp"
     android:layout_height="40dp"
     android:layout_weight="25"
-    android:textColor="#02033e"
+    android:background="#02033e"
+    android:textColor="#d6d7fc"
     android:textSize="17dp"
     android:text="매물등록" />
 <Button
@@ -41,7 +43,8 @@
     android:layout_width="0dp"
     android:layout_height="40dp"
     android:layout_weight="25"
-    android:textColor="#02033e"
+    android:background="#02033e"
+    android:textColor="#d6d7fc"
     android:textSize="17dp"
     android:text="매물보기" />
 <Button
@@ -49,7 +52,8 @@
     android:layout_width="0dp"
     android:layout_height="40dp"
     android:layout_weight="25"
-    android:textColor="#02033e"
+    android:background="#02033e"
+    android:textColor="#d6d7fc"
     android:textSize="17dp"
     android:text="LOGIN" />
     </LinearLayout>
@@ -61,13 +65,17 @@
         <TextView android:id="@+id/location1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
             android:text=" 시-구선택" />
 
         <Spinner android:id="@+id/spinner1"
             android:layout_width="match_parent"
+            android:layout_marginLeft="20dp"
+            android:textSize="17sp"
             android:layout_height="wrap_content"></Spinner>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,10 +84,14 @@
         <TextView android:id="@+id/location2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:textSize="17sp"
             android:text=" 구역" />
 
         <Spinner android:id="@+id/spinner2"
             android:layout_width="match_parent"
+            android:textSize="17sp"
+            android:layout_marginLeft="20dp"
             android:layout_height="wrap_content">
         </Spinner>
     </LinearLayout>
@@ -92,116 +104,155 @@
         <TableLayout
             android:layout_width="300dp"
             android:layout_height="match_parent"
-            android:stretchColumns="0" >
+            android:stretchColumns="0">
+
             <TableRow
                 android:layout_width="300dp"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:layout_weight="40"
                     android:text="투자금액:"
-                    android:textSize="20sp"/>
+                    android:textSize="17sp" />
+
                 <EditText
                     android:id="@+id/tot_amt"
                     android:layout_width="200dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="60"/>
+                    android:layout_weight="60" />
             </TableRow>
+
             <TableRow
                 android:layout_width="300dp"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="40"
+                    android:layout_marginLeft="20dp"
                     android:text="평가금액:"
-                    android:textSize="20sp"/>
+                    android:textSize="17sp" />
+
                 <EditText
                     android:id="@+id/original_amt"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="60"/>
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="60" />
             </TableRow>
+
             <TableRow
                 android:layout_width="300dp"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="30"
+                    android:layout_marginLeft="20dp"
                     android:text="프리미엄:"
-                    android:textSize="20sp"/>
+                    android:textSize="17sp" />
+
                 <EditText
                     android:id="@+id/premium"
                     android:layout_width="200dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="60"/>
+                    android:layout_weight="60" />
             </TableRow>
 
             <TableRow
                 android:layout_width="300dp"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="40"
+                    android:layout_marginLeft="20dp"
                     android:text="현임대차:"
-                    android:textSize="20sp"/>
+                    android:textSize="17sp" />
+
                 <EditText
                     android:id="@+id/rent"
                     android:layout_width="200dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="60"/>
+                    android:layout_weight="60" />
             </TableRow>
 
             <TableRow
                 android:layout_width="300dp"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="40"
+                    android:layout_marginLeft="20dp"
                     android:text="융자금액:"
-                    android:textSize="20sp"/>
+                    android:textSize="17sp" />
+
                 <EditText
                     android:id="@+id/loan"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="60"/>
-            </TableRow>
-            <TableRow
-                android:layout_width="300dp"
-                android:layout_height="wrap_content" >
-                <TextView
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="40"
-                    android:text="이주비:"
-                    android:textSize="20sp"/>
-                <EditText
-                    android:id="@+id/moving"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="60"/>
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="60" />
             </TableRow>
 
             <TableRow
                 android:layout_width="300dp"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="40"
+                    android:layout_marginLeft="20dp"
+                    android:text="이주비:"
+                    android:textSize="17sp" />
+
+                <EditText
+                    android:id="@+id/moving"
+                    android:layout_width="200dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="60" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
+
                 <CheckBox
                     android:id="@+id/checkBox1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="17sp"
                     android:text="매물공개" />
+
                 <CheckBox
                     android:id="@+id/jisang"
                     android:layout_width="wrap_content"
+                    android:layout_marginLeft="30dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textSize="17sp"
                     android:text="지상권" />
             </TableRow>
         </TableLayout>
     </LinearLayout>
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -210,6 +261,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="18sp"
             android:text="등록"
             android:onClick="RegisterOffer"/>
 

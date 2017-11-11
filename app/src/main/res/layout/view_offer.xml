@@ -8,9 +8,10 @@ android:orientation="horizontal">
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/dalim"/>-->
+  <!--
     <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
@@ -26,5 +27,81 @@ android:orientation="horizontal">
         android:layout_height="100dp"
         android:textSize="20sp"
         android:text="texttexttextext"/>
-    </LinearLayout>
+    </LinearLayout>-->
+
+
+  <TableLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:stretchColumns="*">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum= "100"
+        android:background="#ffffff"
+        android:padding="1dp">
+      <TextView
+          android:id="@+id/indate"
+          android:layout_width="0dp"
+          android:layout_weight="20"
+          android:layout_height="40dp"
+          android:layout_marginRight="1dp"
+          android:background="#ffffff"
+          android:gravity="center_vertical|left"
+          android:textColor="#00000e"
+          android:text="평가금액"
+          android:textSize="16sp" />
+
+      <TextView
+          android:id="@+id/location_gu"
+          android:layout_width="0dp"
+          android:layout_weight="20"
+          android:layout_height="40dp"
+          android:layout_marginRight="1dp"
+          android:background="#ffffff"
+          android:gravity="center_vertical|left"
+          android:textColor="#00000e"
+          android:text="날짜"
+          android:textSize="16sp" />
+
+      <TextView
+          android:id="@+id/location_name"
+          android:layout_width="0dp"
+          android:layout_weight="20"
+          android:layout_height="40dp"
+          android:layout_marginRight="1dp"
+          android:background="#ffffff"
+          android:gravity="center_vertical|left"
+          android:textColor="#00000e"
+          android:text="평가금액"
+          android:textSize="16sp" />
+
+      <TextView
+          android:id="@+id/total_amt"
+          android:layout_width="0dp"
+          android:layout_weight="20"
+          android:layout_height="40dp"
+          android:layout_marginRight="1dp"
+          android:background="#ffffff"
+          android:gravity="left"
+          android:textColor="#00000e"
+          android:text="2억"
+          android:textSize="16sp" />
+
+      <TextView
+          android:id="@+id/original_amt"
+          android:layout_width="0dp"
+          android:layout_weight="20"
+          android:layout_height="40dp"
+          android:layout_marginRight="1dp"
+          android:background="#ffffff"
+          android:gravity="center_horizontal"
+          android:text="2억"
+          android:textColor="#00000e"
+          android:textSize="16sp" />
+
+    </TableRow>
+
+  </TableLayout>
 </LinearLayout>

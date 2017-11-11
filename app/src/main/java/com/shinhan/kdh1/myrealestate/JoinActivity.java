@@ -73,8 +73,7 @@ public class JoinActivity extends AppCompatActivity {
         EditText email = (EditText) findViewById(R.id.email);
 
         new join().execute(
-               // "http://172.16.2.14:52273/user",
-                "http://192.168.42.148:52273/user",
+                "http://172.16.2.14:52273/user",
                 userIdText.getText().toString(),
                 passwordText.getText().toString(),
                 email.getText().toString());

@@ -7,11 +7,12 @@
     android:orientation="vertical"
     android:weightSum="100"
     tools:context="com.shinhan.kdh1.myrealestate.JoinActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:weightSum= "100"
-        android:background="#02033e">
+        android:background="#02033e"
+        android:weightSum="100">
         <!--   <Button
                android:id="@+id/activityButton"
                android:layout_width="wrap_content"
@@ -24,109 +25,139 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="25"
-            android:textColor="#02033e"
-            android:textSize="17dp"
-            android:text="HOME" />
+            android:background="#02033e"
+            android:text="HOME"
+            android:textColor="#d6d7fc"
+            android:textSize="17dp" />
+
         <Button
             android:id="@+id/ButtonOfferRegister"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="25"
-            android:textColor="#02033e"
-            android:textSize="17dp"
-            android:text="매물등록" />
+            android:background="#02033e"
+            android:text="매물등록"
+            android:textColor="#d6d7fc"
+            android:textSize="17dp" />
+
         <Button
             android:id="@+id/ButtonOffer"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="25"
-            android:textColor="#02033e"
-            android:textSize="17dp"
-            android:text="매물보기" />
+            android:background="#02033e"
+            android:text="매물보기"
+            android:textColor="#d6d7fc"
+            android:textSize="17dp" />
+
         <Button
             android:id="@+id/ButtonLogin"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="25"
-            android:textColor="#02033e"
-            android:textSize="17dp"
-            android:text="LOGIN" />
+            android:background="#02033e"
+            android:text="LOGIN"
+            android:textColor="#d6d7fc"
+            android:textSize="17dp" />
 
     </LinearLayout>
 
-<LinearLayout
-android:layout_width="300dp"
-android:layout_height="300dp"
-android:orientation="vertical"
-android:background="#cec8c8">
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="30dp"
+        android:background="#cec8c8"
+        android:orientation="vertical">
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="35"
-    android:gravity="center">
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="30"
-        android:text="Id:"
-        android:textSize="25sp"/>
-    <EditText
-        android:id="@+id/join_user_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="70"/>
-</LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="35"
-    android:gravity="center">
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="40"
-        android:text="Password:"
-        android:textSize="25sp"/>
-    <EditText
-        android:id="@+id/join_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="60"/>
-</LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="35"
-    android:gravity="center">
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="40"
-        android:text="email:"
-        android:textSize="25sp"/>
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="60"/>
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="35">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="30"
-    android:gravity="center">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="JOIN"
-        android:onClick="join"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_weight="30"
+                android:text="Id:"
+                android:textSize="20sp" />
 
-</LinearLayout>
+            <EditText
+                android:id="@+id/join_user_id"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_weight="70" />
+        </LinearLayout>
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="35"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="40"
+                android:text="Password:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/join_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="60" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="35"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="40"
+                android:text="email:"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="60" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:onClick="join"
+                android:text="JOIN" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
 

@@ -24,18 +24,24 @@ import java.net.URLEncoder;
 import java.util.Iterator;
 
 public class LoginActivity extends AppCompatActivity {
-
+    String user_id;
+    String su_user_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Intent intent = getIntent();
+        String data = intent.getStringExtra("name");
+
+        su_user_id = data;
 
         Button Button = (Button) findViewById(R.id.ButtonJoin); //해당 버튼을 지정합니다.
         Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { //버튼이 눌렸을 때
                 Intent intent = new Intent(LoginActivity.this, JoinActivity.class);
+                intent.putExtra("name",su_user_id);
                 startActivity(intent); //액티비티 이동
             }
         });
@@ -45,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //버튼이 눌렸을 때
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("name",su_user_id);
                 startActivity(intent); //액티비티 이동
             }
         });
@@ -54,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //버튼이 눌렸을 때
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                intent.putExtra("name",su_user_id);
                 startActivity(intent); //액티비티 이동
             }
         });
@@ -62,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //버튼이 눌렸을 때
                 Intent intent = new Intent(LoginActivity.this, ViewActivity.class);
+                intent.putExtra("name",su_user_id);
                 startActivity(intent); //액티비티 이동
             }
         });
@@ -71,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //버튼이 눌렸을 때
                 Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                intent.putExtra("name",su_user_id);
                 startActivity(intent); //액티비티 이동
             }
         });
@@ -80,9 +90,10 @@ public class LoginActivity extends AppCompatActivity {
     public void login(View view) {
         EditText userIdText = (EditText) findViewById(R.id.user_id);
         EditText passwordText = (EditText) findViewById(R.id.password);
+        user_id = userIdText.getText().toString();
+        su_user_id = null;
         new Login().execute(
-               // "http://172.16.2.14:52273/user/login",
-                "http://192.168.42.148:52273/user/login",
+               "http://172.16.2.14:52273/user/login",
                 userIdText.getText().toString(),
                 passwordText.getText().toString());
     }
@@ -149,6 +160,11 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("token", token);
                     editor.commit();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
+                    //Toast.makeText(getApplicationContext(),user_id+"", Toast.LENGTH_LONG).show();
+                    su_user_id = user_id;
+
+                    intent.putExtra("name",su_user_id);
                     startActivity(intent);
                     finish();
                 } else {//로그인 실패
